@@ -1,0 +1,3 @@
+[submodule "ng-pages"]
+	path = ng-pages
+	url = https://github.com/goodow/realtime-web-tasks.git
