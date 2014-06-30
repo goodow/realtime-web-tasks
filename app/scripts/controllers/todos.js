@@ -165,14 +165,14 @@ angular.module('todos').controller('CollaboratorsCtrl', ['$scope', 'config',
     };
     $scope.collaborators = $scope.realtimeDocument.getCollaborators();
 
-    $scope.realtimeDocument.addEventListener(gapi.drive.realtime.EventType.COLLABORATOR_LEFT, collaboratorListener);
-    $scope.realtimeDocument.addEventListener(gapi.drive.realtime.EventType.COLLABORATOR_JOINED, collaboratorListener);
+    $scope.realtimeDocument.onCollaboratorJoined(collaboratorListener);
+    $scope.realtimeDocument.onCollaboratorLeft(collaboratorListener);
 
     $scope.$on('$destroy', function () {
       var doc = $scope.realtimeDocument;
       if (doc) {
-        doc.removeEventListener(gapi.drive.realtime.EventType.COLLABORATOR_LEFT, collaboratorListener);
-        doc.removeEventListener(gapi.drive.realtime.EventType.COLLABORATOR_JOINED, collaboratorListener);
+        doc.onCollaboratorJoined(null);
+        doc.onCollaboratorLeft(null);
       }
     });
 
