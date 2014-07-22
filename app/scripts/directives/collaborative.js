@@ -91,7 +91,6 @@ angular.module('todos').directive('collaborative',
         textInsertRegistration.unregister();
         textDeleteRegistration.unregister();
       };
-
       var textInsertRegistration = this.string.onTextInserted(this._insertListener);
       var textDeleteRegistration = this.string.onTextDeleted(this._deleteListener);
     };
